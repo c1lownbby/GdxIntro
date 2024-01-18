@@ -5,18 +5,21 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.utils.ScreenUtils;
+import com.bmhs.gdxintro.gfx.utils.TileHandler;
 
 public class AppHandler extends ApplicationAdapter {
 	SpriteBatch batch;
-	Texture img;
+	//Texture img;
+	//TextureRegion subImg;
 
 	int x, y;
 	
 	@Override
 	public void create () {
 		batch = new SpriteBatch();
-		img = new Texture("badlogic.jpg");
 
 		x = 0;
 		y = 0;
@@ -26,7 +29,17 @@ public class AppHandler extends ApplicationAdapter {
 	public void render () {
 		ScreenUtils.clear(1, 0, 0, 1);
 		batch.begin();
-		batch.draw(img, x, y);
+
+		for(int r = 0; r < Gdx.graphics.getHeight(); r+=64) {
+			for (int c = 0; c < Gdx.graphics.getWidth(); c+=64){
+				batch.draw(TileHandler.getTileHandler().getWorldTileArray().get(x++).getTexture(), c, r );
+				if(x > 5){
+					x = 0;
+				}
+
+			}
+		}
+
 		batch.end();
 
 		checkInput();
@@ -66,6 +79,8 @@ public class AppHandler extends ApplicationAdapter {
 
 		 */
 
+		/*
+
 
 		if(x < (Gdx.input.getX() - img.getWidth()/2)) {
 			x+= 20;
@@ -78,13 +93,13 @@ public class AppHandler extends ApplicationAdapter {
 		}
 		if(y > (Gdx.graphics.getHeight() - Gdx.input.getY() - img.getHeight()/2)) {
 			y-= 20;
-		}
 
+		}
+*/
 	}
 
 	@Override
 	public void dispose () {
 		batch.dispose();
-		img.dispose();
 	}
 }
