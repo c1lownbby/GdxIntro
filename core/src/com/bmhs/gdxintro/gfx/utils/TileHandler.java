@@ -34,8 +34,8 @@ public class TileHandler {
         worldTileArray.add(whiteWorldTile);
 
         tempRegion = new TextureRegion(tempTexture, spriteOnSheetWidth*0, spriteOnSheetHeight*2, spriteOnSheetWidth, spriteOnSheetHeight);
-        WorldTile redWorldTile = new WorldTile(tempRegion, 2, "red");
-        worldTileArray.add(redWorldTile);
+        WorldTile pinkWorldTile = new WorldTile(tempRegion, 2, "pink");
+        worldTileArray.add(pinkWorldTile);
 
         tempRegion = new TextureRegion(tempTexture, spriteOnSheetWidth*0, spriteOnSheetHeight*3, spriteOnSheetWidth, spriteOnSheetHeight);
         WorldTile orangeWorldTile = new WorldTile(tempRegion, 3, "orange");
